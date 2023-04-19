@@ -39,7 +39,7 @@ class ReservationRepository extends ServiceEntityRepository
         }
     }
 
-    public function countRes (Reservation $entity)
+    public function countRes (Reservation $entity, Client $entity)
     {
         this->getEntityManager();
 
@@ -51,7 +51,7 @@ class ReservationRepository extends ServiceEntityRepository
         $nbReservations = $query;
     }
 
-    public function countResAnnulation (Reservation $entity)
+    public function countResAnnulation (Reservation $entity, Client $entity)
     {
         this->getEntityManager();
 
@@ -64,7 +64,7 @@ class ReservationRepository extends ServiceEntityRepository
         $nbAnnulation = $query;
     }
 
-    public function countResModification (Reservation $entity)
+    public function countResModification (Reservation $entity, Client $entity)
     {
         this->getEntityManager();
 
