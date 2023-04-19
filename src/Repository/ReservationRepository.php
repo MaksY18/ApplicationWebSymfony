@@ -39,6 +39,45 @@ class ReservationRepository extends ServiceEntityRepository
         }
     }
 
+    public function countRes (Reservation $entity)
+    {
+        this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT COUNT(id)
+             FROM src/Entity/Reservation
+             WHERE client.id = :id'
+        )->setParameter("id", $id);
+        $nbReservations = $query;
+    }
+
+    public function countResAnnulation (Reservation $entity)
+    {
+        this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT COUNT(id)
+             FROM src/Entity/Reservation r
+             WHERE client.id = :id 
+             AND reservation.statut = "annulée"'
+        );
+        $nbAnnulation = $query;
+    }
+
+    public function countResModification (Reservation $entity)
+    {
+        this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT COUNT(id)
+             FROM src/Entity/Reservation r
+             WHERE client.id = :id 
+             AND reservation.statut = "modifiée"'
+        );
+        $nbModification = $query;
+    }
+
+
 //    /**
 //     * @return Reservation[] Returns an array of Reservation objects
 //     */
